@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model NationalParks.Models.Location
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Create New Location</h2>
+</div>
+
+<div class="container mt-4">
+    <form asp-action="CreateLocation" asp-controller="Location">
+        <div class="mb-3">
+            <label for="Province" class="form-label">Location Province</label>
+            <input type="text" class="form-control" id="Province" placeholder="Enter Province Name" asp-for="Province" />
+        </div>
+        <div class="mb-3">
+            <label for="Canton" class="form-label">Canton</label>
+            <input type="text" class="form-control" id="Canton" placeholder="Enter Canton" asp-for="Canton" />
+        </div>
+        <div class="mb-3">
+            <label for="District" class="form-label">District</label>
+            <input type="text" class="form-control" id="District" placeholder="Enter District" asp-for="District" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Location</button>
+    </form>
+</div>

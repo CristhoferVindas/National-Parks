@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<NationalParks.Models.Location>
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Location Management</h2>
+</div>
+
+<div class="container mt-4">
+    <a class="btn btn-primary btn-sm mb-2" asp-action="CreateLocation" asp-controller="Location" >Create Location</a>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Province</th>
+                <th>Canton</th>
+                <th>District</th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Location in Model)
+            {
+                <tr>
+                    <td>@Location.Province</td>
+                    <td>@Location.Canton</td>
+                    <td>@Location.District</td>
+
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-action="EditLocation" asp-controller="Location" asp-route-id="@Location.Id">Edit</a>
+                        <a id="DeleteLocationID" class="btn btn-danger btn-sm" asp-action="DeleteLocation" asp-controller="Location" asp-route-id="@Location.Id"  data-delete="Location">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts{
+    <script src="~/js/Location.js"></script>
+}
