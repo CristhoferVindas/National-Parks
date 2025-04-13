@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<NationalParks.Models.Card>
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Card Management</h2>
+</div>
+
+<div class="container mt-4">
+    <a class="btn btn-primary btn-sm mb-2" asp-action="CreateCard" asp-controller="Card" >Create Card</a>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Commission</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var card in Model)
+            {
+                <tr>
+                    <td>@card.CardType</td>
+                    <td>@card.Commission</td>
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-action="EditCard" asp-controller="Card" asp-route-id="@card.Id">Edit</a>
+                        <a id="DeleteCardID" class="btn btn-danger btn-sm" asp-action="DeleteCard" asp-controller="Card" asp-route-id="@card.Id"  data-delete="Card">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts{
+    <script src="~/js/Card.js"></script>
+}
