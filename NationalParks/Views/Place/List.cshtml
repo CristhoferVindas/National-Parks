@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<NationalParks.Models.Place>
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Place Management</h2>
+</div>
+
+<div class="container mt-4">
+    <a class="btn btn-primary btn-sm mb-2" asp-action="CreatePlace" asp-controller="Place" >Create Place</a>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Recognitions</th>
+                <th>Address</th>
+                <th>ReservedArea</th>
+                <th>Coordinates</th>
+                <th>Price</th>
+                <th>SiteType</th>
+                <th>Location</th>
+
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Place in Model)
+            {
+                <tr>
+                    <td>@Place.Name</td>
+                    <td>@Place.Description</td>
+                    <td>@Place.Recognitions</td>
+                    <td>@Place.Address</td>
+                    <td>@Place.ReservedArea</td>
+                    <td>@Place.Coordinates</td>
+                    <td>@Place.Price</td>
+                    <td>@(Place.SiteTypeNavigation != null ? Place.SiteTypeNavigation.Name : "No SiteType")</td>
+                    <td>@(Place.LocationNavigation != null ? Place.LocationNavigation.Province + ", " + Place.LocationNavigation.Canton + ", " + Place.LocationNavigation.District : "Unknown")</td>
+
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-action="EditPlace" asp-controller="Place" asp-route-id="@Place.Id">Edit</a>
+                        <a id="DeletePlaceID" class="btn btn-danger btn-sm" asp-action="DeletePlace" asp-controller="Place" asp-route-id="@Place.Id"  data-delete="Place">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts{
+    <script src="~/js/Place.js"></script>
+}
