@@ -1,0 +1,37 @@
+﻿@model List<NationalParks.Models.Species>
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Species Management</h2>
+</div>
+
+<div class="container mt-4">
+    <a class="btn btn-primary btn-sm mb-2" asp-action="CreateSpecies" asp-controller="Species">Create Species</a>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Species Type</th>
+                <th>Common Name</th>
+                <th>Scientific Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var species in Model)
+            {
+                <tr>
+                    <td>@species.SpeciesType</td>
+                    <td>@species.CommonName</td>
+                    <td>@species.ScientificName</td>
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-action="EditSpecies" asp-controller="Species" asp-route-id="@species.Id">Edit</a>
+                        <a id="DeleteSpeciesID" class="btn btn-danger btn-sm" asp-action="DeleteSpecies" asp-controller="Species" asp-route-id="@species.Id" data-delete="Species">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/Species.js"></script>
+}

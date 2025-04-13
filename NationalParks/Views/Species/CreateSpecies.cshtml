@@ -1,0 +1,41 @@
+﻿@model NationalParks.Models.Species
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Create New Species</h2>
+</div>
+
+<div class="container mt-4">
+    <form asp-action="CreateSpecies" asp-controller="Species">
+        <div class="mb-3">
+            <label for="SpeciesType" class="form-label">Species Type</label>
+            <input type="text" class="form-control" id="SpeciesType" asp-for="SpeciesType" />
+        </div>
+
+        <div class="mb-3">
+            <label for="ScientificName" class="form-label">Scientific Name</label>
+            <input type="text" class="form-control" id="ScientificName" asp-for="ScientificName" />
+        </div>
+
+        <div class="mb-3">
+            <label for="CommonName" class="form-label">Common Name</label>
+            <input type="text" class="form-control" id="CommonName" asp-for="CommonName" />
+        </div>
+
+        <div class="mb-3">
+            <label for="Weight" class="form-label">Weight</label>
+            <input type="number" class="form-control" id="Weight" asp-for="Weight" />
+        </div>
+
+        <div class="mb-3">
+            <label for="Height" class="form-label">Height</label>
+            <input type="number" class="form-control" id="Height" asp-for="Height" />
+        </div>
+
+        <div class="mb-3">
+            <label for="SpecialCharacteristics" class="form-label">Special Characteristics</label>
+            <input type="text" class="form-control" id="SpecialCharacteristics" asp-for="SpecialCharacteristics" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Species</button>
+    </form>
+</div>
