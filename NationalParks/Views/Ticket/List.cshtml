@@ -1,0 +1,41 @@
+﻿@model List<NationalParks.Models.Ticket>
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Ticket Management</h2>
+</div>
+
+<div class="container mt-4">
+    <a class="btn btn-primary btn-sm mb-2" asp-action="CreateTicket" asp-controller="Ticket">Create Ticket</a>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Price</th>
+                <th>Sale Date</th>
+                <th>Commission</th>
+                <th>Card Type</th>
+                <th>Place</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ticket in Model)
+            {
+                <tr>
+                    <td>@ticket.Price</td>
+                    <td>@ticket.SaleDate</td>
+                    <td>@ticket.Commission</td>
+                    <td>@ticket.cardId</td>
+                   
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-action="EditTicket" asp-controller="Ticket" asp-route-id="@ticket.Id">Edit</a>
+                        <a id="DeleteTicketID" class="btn btn-danger btn-sm" asp-action="DeleteTicket" asp-controller="Ticket" asp-route-id="@ticket.Id" data-delete="Ticket">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/Ticket.js"></script>
+}
