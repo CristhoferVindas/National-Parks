@@ -1,0 +1,57 @@
+﻿@model NationalParks.Models.ViewModels.VisitorViewModel
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Edit Visitor</h2>
+</div>
+
+<div class="container mt-4">
+    <form asp-action="EditVisitor" asp-controller="Visitor">
+        <input type="hidden" asp-for="Visitor.Id" />
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="FirstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="FirstName" asp-for="Visitor.FirstName" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="LastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="LastName" asp-for="Visitor.LastName" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="Email" asp-for="Visitor.Email" />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="BirthDate" class="form-label">Birth Date</label>
+                    <input type="date" class="form-control" id="BirthDate" asp-for="Visitor.BirthDate" />
+                </div>
+                <div class="mb-3">
+                    <label for="IdnumberOrPassport" class="form-label">ID Number or Passport</label>
+                    <input type="number" class="form-control" id="IdnumberOrPassport" asp-for="Visitor.IdnumberOrPassport" />
+                </div>
+                <div class="mb-3">
+                    <label for="VisitReason" class="form-label">Visit Reason</label>
+                    <input type="text" class="form-control" id="VisitReason" asp-for="Visitor.VisitReason" />
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Country" class="form-label">Country</label>
+            <select class="form-select" id="Country" asp-for="@Model.Visitor.CountryId">
+                @foreach (var country in Model.Countries)
+                {
+                    <option value="@country.Id">@country.Name</option>
+                }
+            </select>
+        </div>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Edit Visitor</button>
+        </div>
+    </form>
+</div>
