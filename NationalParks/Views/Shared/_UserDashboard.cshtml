@@ -1,0 +1,31 @@
+﻿@* Views/Shared/_UserDashboard.cshtml *@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">User Dashboard - Explore Costa Rica's Nature</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100 border-success">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Buy Tickets</h5>
+                    <a asp-controller="TicketSale" asp-action="CreateTicketSale" class="btn btn-success">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 border-info">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Rate a Park</h5>
+                    <a asp-controller="PlaceRating" asp-action="CreatePlaceRating" class="btn btn-info">Rate Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 border-primary">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Explore Parks</h5>
+                    <a asp-controller="Place" asp-action="List" class="btn btn-primary">See All</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
