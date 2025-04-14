@@ -1,0 +1,45 @@
+﻿@model List<NationalParks.Models.ViewModels.RatingReport>
+@using System.Globalization
+
+@{
+    ViewBag.Title = "Reporte de Valoraciones";
+    var generatedDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+}
+
+<div class="container my-4">
+    <div class="text-center mb-4 border-bottom pb-3">
+        <h2 class="fw-bold">Reporte de Valoraciones de Parques y Reservas</h2>
+        <p class="text-muted">Generado el: @generatedDate</p>
+    </div>
+
+    <table class="table table-bordered table-striped shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-start">Lugar</th>
+                <th class="text-start">Promedio de Estrellas</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.PlaceName</td>
+                        <td>@item.AverageRating.ToString("0.00")</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="2" class="text-center text-muted">No hay datos disponibles</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-end mt-5 text-muted" style="font-size: 0.9rem;">
+        Sistema de Reportes - Parques Nacionales
+    </div>
+</div>

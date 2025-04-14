@@ -1,0 +1,24 @@
+﻿<div class="container mt-5">
+    <h2 class="text-center mb-4 fw-bold text-primary">Reports Dashboard - National Parks System</h2>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card h-100 border-info shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Commission Payments by Date Range</h5>
+                    <p class="card-text">Generate a report showing total commissions to be paid to authorized card brands within a custom date range. Exportable as PDF.</p>
+                    <a asp-controller="Report" asp-action="Pays" class="btn btn-info px-4 py-2">Generate Report</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 border-success shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Park & Reserve Ratings Report</h5>
+                    <p class="card-text">View top-rated parks/reserves or reverse to see the lowest-rated ones to identify areas of improvement. Exportable as PDF.</p>
+                    <a asp-controller="Report" asp-action="Rating" class="btn btn-success px-4 py-2">Generate Report</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
