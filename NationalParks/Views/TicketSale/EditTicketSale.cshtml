@@ -1,0 +1,105 @@
+﻿@model NationalParks.Models.ViewModels.TicketSaleViewModel
+
+@{
+    ViewData["Title"] = "Editar Venta de Entradas";
+}
+
+<h2 class="text-center my-4">Editar Venta de Entradas</h2>
+
+<form asp-action="EditTicketSale" method="post" class="container">
+
+    <!-- Campo oculto para el ID de la venta -->
+    <input type="hidden" asp-for="TicketSale.Id" />
+
+    <!-- Primera fila: Visitante y tarjeta -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <select asp-for="TicketSale.VisitorId" class="form-control">
+                <option value="">Nombre del Visitante</option>
+                @foreach (var visitor in Model.Visitors)
+                {
+                    <option value="@visitor.Id" >
+                        @visitor.FirstName
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="col-md-6">
+            <select id="cardId" asp-for="TicketSale.CardId" class="form-control">
+                <option value="">Seleccionar Tarjeta</option>
+                @foreach (var card in Model.Cards)
+                {
+                    <option value="@card.Id" >
+                        @card.CardType
+                    </option>
+                }
+            </select>
+        </div>
+    </div>
+    <!-- Segunda fila: Lugar, Fecha y Botón Agregar -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <select id="placeId" class="form-control">
+                @foreach (var place in Model.Places)
+                {
+                    <option value="@place.Id">@place.Name - ₡ @place.Price</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-4">
+            <input name="saleDate" id="saleDate" class="form-control" type="date" />
+        </div>
+        <div class="col-md-4 text-end">
+            <button type="button" id="addTicketBtn" class="btn btn-success w-100">Agregar Tiquete</button>
+        </div>
+    </div>
+    <!-- Tabla de Entradas Existentes -->
+    <div id="listaEntradas" class="mt-4">
+        <h5>Entradas Asociadas</h5>
+       @*  <table class="table table-bordered table-striped text-center align-middle shadow-sm">
+            <thead>
+                <tr>
+                    <th>Nombre de Sitio</th>
+                    <th>Fecha de la Entrada</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Tickets.Any())
+                {
+                    foreach (var ticket in Model.Tickets)
+                    {
+                        <tr>
+                            <td>@(ticket.PlaceNavigation?.Name ?? "No place")</td>
+                            <td>@ticket.SaleDate.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-danger" onclick="removeTicket(@ticket.Id)">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-muted py-4">No hay entradas asociadas.</td>
+                    </tr>
+                }
+            </tbody>
+        </table> *@
+        @Html.Partial("_TicketListPartial", Model.Tickets)
+    </div>
+
+    <!-- Botón Guardar Cambios -->
+    <div class="text-end mt-4">
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </div>
+</form>
+
+<!-- Botón Volver -->
+<div class="container mt-3">
+    <a asp-action="List" class="btn btn-secondary">Volver</a>
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}
