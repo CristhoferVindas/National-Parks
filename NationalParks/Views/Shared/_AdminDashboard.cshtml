@@ -1,0 +1,46 @@
+﻿<div class="container mt-5">
+    <h2 class="text-center mb-4 fw-bold text-primary">Admin Dashboard - National Parks System</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100 border-primary shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Site Types</h5>
+                    <a asp-controller="SiteType" asp-action="List" class="btn btn-primary px-4 py-2">Manage</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 border-success shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Parks & Refuges</h5>
+                    <a asp-controller="Place" asp-action="List" class="btn btn-success px-4 py-2">Manage</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 border-info shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Species</h5>
+                    <a asp-controller="Species" asp-action="List" class="btn btn-info px-4 py-2">Manage</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 border-secondary shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Card Commissions</h5>
+                    <a asp-controller="Card" asp-action="List" class="btn btn-secondary px-4 py-2">Manage</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 border-dark shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Reports</h5>
+                    <a asp-controller="Report" asp-action="Index" class="btn btn-dark px-4 py-2">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
