@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home - Costa Rica National Parks";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Costa Rica National Parks System</h1>
+    <p class="lead">Explore the natural wealth of our country and manage your experience.</p>
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <div class="mt-4">
+            <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Login</a>
+            <a class="btn btn-outline-secondary" asp-controller="Account" asp-action="Register">Register</a>
+        </div>
+    }
+    else if (User.IsInRole("User"))
+    {
+        ViewData["Title"] = "User Dashboard";
+        @await Html.PartialAsync("_UserDashboard")
+    }
+    else if (User.IsInRole("Admin"))
+    {
+        ViewData["Title"] = "Admin Dashboard";
+        @await Html.PartialAsync("_AdminDashboard")
+    }
+
+    <div class="mt-5">
+        <img src="~/images/naturaleza.jpg" class="img-fluid rounded" alt="National Parks" />
+    </div>
+</div>

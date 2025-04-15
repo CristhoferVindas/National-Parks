@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model NationalParks.Models.SiteType
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Create New SiteType</h2>
+</div>
+
+<div class="container mt-4">
+    <form asp-action="CreateSiteType" asp-controller="SiteType">
+        <div class="mb-3">
+            <label for="Name" class="form-label">SiteType Name</label>
+            <input type="text" class="form-control" id="Name" placeholder="Enter SiteType Name" asp-for="Name" />
+        </div>
+        <button type="submit" class="btn btn-primary">Create SiteType</button>
+    </form>
+</div>

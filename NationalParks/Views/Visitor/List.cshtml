@@ -1,0 +1,42 @@
+﻿@model List<NationalParks.Models.Visitor>
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Visitor Management</h2>
+</div>
+
+<div class="container mt-4">
+    <a class="btn btn-primary btn-sm mb-2" asp-action="CreateVisitor" asp-controller="Visitor">Create Visitor</a>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Visit Reason</th>
+                <th>Country</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var visitor in Model)
+            {
+                <tr>
+                    <td>@visitor.FirstName</td>
+                    <td>@visitor.LastName</td>
+                    <td>@visitor.Email</td>
+                    <td>@visitor.VisitReason</td>
+                    <td>@(visitor.Country != null ? visitor.Country.Name : "No Country")</td>
+
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-action="EditVisitor" asp-controller="Visitor" asp-route-id="@visitor.Id">Edit</a>
+                        <a id="DeleteVisitorID" class="btn btn-danger btn-sm" asp-action="DeleteVisitor" asp-controller="Visitor" asp-route-id="@visitor.Id" data-delete="Visitor">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/Visitor.js"></script>
+}

@@ -1,0 +1,55 @@
+﻿@model NationalParks.Models.ViewModels.PlaceRatingViewModel
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Create New PlaceRating</h2>
+</div>
+
+<div class="container mt-4">
+    <form asp-action="CreatePlaceRating" asp-controller="PlaceRating">
+        <div class="mb-3">
+            <label class="form-label">Stars</label>
+            <div class="star-rating justify-content-end align-content-start">
+                @for (int i = 5; i >= 1; i--)
+                {
+                    <input type="radio" id="star-@i" name="PlaceRating.Stars" value="@i" class="d-none" />
+                    <label for="star-@i" class="star">&#9733;</label>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="Observation" class="form-label">Observation</label>
+            <input type="text" class="form-control" id="Observation" placeholder="Enter Observation" asp-for="PlaceRating.Observation" />
+        </div>
+
+        <div class="mb-3">
+            <label for="Location" class="form-label">Location</label>
+            <select class="form-select" id="Ubicación" asp-for="@Model.PlaceRating.PlaceId"> 
+                @foreach (var place in Model.Places)
+                {
+                    <option value="@place.Id">@place.Name</option>  
+                }
+            </select> ​ ​ 
+        </div> ​ ​ 
+        
+        <button type="submit" class="btn btn-primary">Create PlaceRating</button>
+    </form>
+</div>
+
+<style>
+    .star-rating {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+    }
+
+    .star {
+        font-size: 2rem;
+        color: gray;
+        cursor: pointer;
+    }
+
+    input[type="radio"]:checked ~ label {
+        color: gold;
+    }
+</style>

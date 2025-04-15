@@ -1,0 +1,33 @@
+﻿@model NationalParks.Models.Ticket
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Create New Ticket</h2>
+</div>
+
+<div class="container mt-4">
+    <form asp-action="CreateTicket" asp-controller="Ticket">
+        <div class="mb-3">
+            <label for="Price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="Price" asp-for="Price" />
+        </div>
+
+        <div class="mb-3">
+            <label for="SaleDate" class="form-label">Sale Date</label>
+            <input type="date" class="form-control" id="SaleDate" asp-for="SaleDate" />
+        </div>
+
+        <div class="mb-3">
+            <label for="Commission" class="form-label">Commission</label>
+            <input type="number" class="form-control" id="Commission" asp-for="Commission" />
+        </div>
+
+        <div class="mb-3">
+            <label for="CardType" class="form-label">Card Type</label>
+            <input type="text" class="form-control" id="CardType" asp-for="cardId" />
+        </div>
+
+       
+
+        <button type="submit" class="btn btn-primary">Create Ticket</button>
+    </form>
+</div>

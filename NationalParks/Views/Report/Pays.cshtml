@@ -1,0 +1,31 @@
+﻿<div class="">
+    <form asp-action="GeneratePayReportPdf" asp-controller="Pdf" method="post" class=" container mt-xxl-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 p-4 border rounded shadow-sm bg-white">
+
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold text-primary">📊 Commission Report</h2>
+                    <p class="text-muted">Select a date range to generate the PDF.</p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="initialDate" class="form-label">📅 Start Date</label>
+                    <input type="date" class="form-control" id="initialDate" name="initialDate" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="finalDate" class="form-label">📅 End Date</label>
+                    <input type="date" class="form-control" id="finalDate" name="finalDate" required>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-4 py-2">
+                        🧾 Generate PDF
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+</div>

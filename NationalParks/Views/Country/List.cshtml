@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<NationalParks.Models.Country>
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Country Management</h2>
+</div>
+
+<div class="container mt-4">
+    <a class="btn btn-primary btn-sm mb-2" asp-action="CreateCountry" asp-controller="Country" >Create Country</a>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Continent</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Country in Model)
+            {
+                <tr>
+                    <td>@Country.Name</td>
+                    <td>@Country.Continent</td>
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-action="EditCountry" asp-controller="Country" asp-route-id="@Country.Id">Edit</a>
+                        <a id="DeleteCountryID" class="btn btn-danger btn-sm" asp-action="DeleteCountry" asp-controller="Country" asp-route-id="@Country.Id"  data-delete="Country">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts{
+    <script src="~/js/Country.js"></script>
+}

@@ -1,0 +1,51 @@
+﻿@model List<NationalParks.Models.Ticket>
+
+@{
+    var total = Model.Sum(ticket => ticket.Price);
+}
+
+<div class="mt-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center align-middle shadow-sm mb-0">
+            <thead class="thead-light sticky-top bg-light">
+                <tr>
+                    <th>Nombre de Sitio</th>
+                    <th>Fecha de la Entrada</th>
+                    <th>Precio</th>
+
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+        </table>
+        <div style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-bordered table-striped text-center align-middle mb-0">
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        foreach (var ticket in Model)
+                        {
+                            <tr>
+                                <td>@(ticket.PlaceNavigation?.Name ?? "No place")</td>
+                                <td>@ticket.SaleDate.ToString("yyyy-MM-dd")</td>
+                                <td>@ticket.Price </td>
+
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeTicket(@ticket.Id)">Eliminar</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-muted py-4">No hay entradas asociadas.</td>
+                        </tr>
+                    }
+            </table>
+        </div>
+    </div>
+
+    <div class="text-end mt-3">
+        <h5><strong>Precio Total:</strong> ₡@total.ToString("N0")</h5>
+    </div>
+</div>

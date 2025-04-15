@@ -1,0 +1,55 @@
+﻿@model List<NationalParks.Models.PlaceRating>
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">PlaceRating Management</h2>
+</div>
+
+<div class="container mt-4">
+    <a class="btn btn-primary btn-sm mb-2" asp-action="CreatePlaceRating" asp-controller="PlaceRating">Create PlaceRating</a>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Place Name</th>
+                <th>Stars</th>
+                <th>Observation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var placeRating in Model)
+            {
+                <tr>
+                    <td>@(placeRating.Place != null ? placeRating.Place.Name : "No Place")</td>
+                    <td>
+                        <span class="stars">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <span class="star @(i <= placeRating.Stars ? "filled" : "")">&#9733;</span>
+                            }
+                        </span>
+                    </td>
+                    <td>@placeRating.Observation</td>
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-action="EditPlaceRating" asp-controller="PlaceRating" asp-route-id="@placeRating.Id">Edit</a>
+                        <a id="DeletePlaceRatingID" class="btn btn-danger btn-sm" asp-action="DeletePlaceRating" asp-controller="PlaceRating" asp-route-id="@placeRating.Id" data-delete="PlaceRating">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .stars {
+        font-size: 1.5rem;
+        color: gray;
+    }
+
+    .star.filled {
+        color: gold;
+    }
+</style>
+
+@section Scripts {
+    <script src="~/js/PlaceRating.js"></script>
+}

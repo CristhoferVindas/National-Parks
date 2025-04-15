@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model NationalParks.Models.Card
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Edit Card</h2>
+</div>
+
+<div class="container mt-4">
+    <form asp-action="EditCard" asp-controller="Card">
+        <div class="mb-3">
+            <label for="cardType" class="form-label">Card Type</label>
+            <input type="text" class="form-control" id="cardType" placeholder="Enter Card Type" asp-for="CardType" />
+        </div>
+
+        <div class="mb-3">
+            <label for="commission" class="form-label">Commission</label>
+            <input type="text" class="form-control" id="commission" placeholder="Enter Commission" asp-for="Commission" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Edit Card</button>
+    </form>
+</div>
